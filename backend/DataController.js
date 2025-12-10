@@ -59,7 +59,7 @@ function getSurveyConfig() {
   }
 }
 
-// --- 3. HANDLE SERVICES / LAYANAN (BARU - doGet) ---
+// --- 3. HANDLE SERVICES (doGet) ---
 function getSurveyServices() {
   try {
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -67,33 +67,29 @@ function getSurveyServices() {
     
     if(!sheet) return createSuccessResponse({}, "Sheet Services belum dibuat");
 
-    // Ambil semua data
     const data = sheet.getDataRange().getValues();
-    const headers = data.shift(); // Buang header
+    const headers = data.shift(); 
 
-    // Grouping Logic: Mengubah Table menjadi JSON Object { "Unit": ["Layanan A", "Layanan B"] }
     const servicesMap = {};
-
     data.forEach(row => {
-      const unit = row[0];        // Kolom A: Unit Kerja
-      const layanan = row[1];     // Kolom B: Jenis Layanan
+      const unit = row[0];        
+      const layanan = row[1];     
 
-      if (unit && layanan) { // Hanya proses jika data lengkap
+      if (unit && layanan) { 
         if (!servicesMap[unit]) {
-          servicesMap[unit] = []; // Buat array baru jika Unit belum ada
+          servicesMap[unit] = []; 
         }
         servicesMap[unit].push(layanan);
       }
     });
 
     return createSuccessResponse(servicesMap, "Layanan dimuat");
-
   } catch (error) {
     return createErrorResponse("Gagal memuat services: " + error.message);
   }
 }
 
-// --- 4. HANDLE HISTORY & STATISTIK (doGet) ---
+// --- 4. HANDLE HISTORY (doGet) ---
 function getSurveyHistory() {
   try {
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -118,6 +114,38 @@ function getSurveyHistory() {
   }
 }
 
+// --- 5. HANDLE INFO PELAKSANAAN (Horizontal) ---
+function getSurveyInfo() {
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME.INFO);
+    
+    if(!sheet) return createSuccessResponse({}, "Sheet Info belum dibuat");
+
+    const data = sheet.getDataRange().getValues(); // Ambil semua data
+    const headers = data[0]; // Baris 1 adalah Header (Kunci)
+    const values = data[1];  // Baris 2 adalah Nilai
+
+    const infoData = {};
+    
+    // Looping dinamis berdasarkan jumlah kolom header
+    if (headers && values) {
+      headers.forEach((header, index) => {
+        // Masukkan ke object: { "Periode": "...", "Status": "..." }
+        // Pastikan header tidak kosong
+        if (header) {
+           infoData[header] = values[index];
+        }
+      });
+    }
+
+    return createSuccessResponse(infoData, "Info dimuat");
+  } catch (error) {
+    return createErrorResponse("Gagal memuat info: " + error.message);
+  }
+}
+
+// --- 6. HANDLE STATISTIK (doGet) ---
 function getSurveyStats() {
   try {
     const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
@@ -132,28 +160,5 @@ function getSurveyStats() {
     return createSuccessResponse(stats, "Statistik dimuat");
   } catch (error) {
     return createErrorResponse("Gagal memuat statistik: " + error.message);
-  }
-}
-
-// --- 5. HANDLE INFO PELAKSANAAN (BARU) ---
-function getSurveyInfo() {
-  try {
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
-    const sheet = ss.getSheetByName(SHEET_NAME.INFO);
-    
-    if(!sheet) return createSuccessResponse({}, "Sheet Info belum dibuat");
-
-    const data = sheet.getDataRange().getValues();
-    const headers = data.shift(); // Buang header
-
-    // Ubah menjadi Object sederhana { "Periode": "...", "Status": "..." }
-    const infoData = {};
-    data.forEach(row => {
-      if(row[0]) infoData[row[0]] = row[1];
-    });
-
-    return createSuccessResponse(infoData, "Info dimuat");
-  } catch (error) {
-    return createErrorResponse("Gagal memuat info: " + error.message);
   }
 }

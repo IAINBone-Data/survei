@@ -6,7 +6,7 @@ const path = require('path');
 // ================================================================
 // Ganti URL di bawah ini dengan URL Web App Google Apps Script Anda yang ASLI
 // Contoh: "https://script.google.com/macros/s/AKfycbx.../exec"
-const API_URL = "https://script.google.com/macros/s/AKfycbxMUuAv_30Co_tVsoDNkt_V42EgSUB_DZiyW_gVW1Sjbex91o6MQeEgxBKKHpOJ1WDxdA/exec"; 
+const API_URL = "https://script.google.com/macros/s/AKfycbyL7Q_dFTK-KucKafV4cOKge4eQTLGITcNO340b4lEPTb9xw8AyDC9hwLZ6osV3760tjg/exec"; 
 // ================================================================
 
 // Lokasi penyimpanan file JSON (di dalam folder public frontend agar bisa diakses web)
