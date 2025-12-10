@@ -1,22 +1,19 @@
-name: Update Survey Data
+name: Update Survey Data & Deploy
 
 on:
-  # Jalan setiap jam 6 pagi dan 6 sore (WIB ~ UTC+7)
+  # Jalan otomatis setiap jam 6 pagi dan 6 sore (WIB)
   schedule:
-    - cron: '0 23,11 * * *' # Jam 23 UTC = 06 WIB, Jam 11 UTC = 18 WIB
-  # Jalan manual jika tombol diklik di GitHub
+    - cron: '0 23,11 * * *'
+  # Bisa dijalankan manual lewat tombol
   workflow_dispatch:
-  # Jalan setiap kali ada push ke main (opsional)
-  push:
-    branches:
-      - main
+
+permissions:
+  contents: write
 
 jobs:
-  update-data:
+  update-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Izin untuk commit perubahan
-
+    
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
@@ -26,14 +23,33 @@ jobs:
         with:
           node-version: 18
 
-      - name: Run Fetch Script
+      # 1. JALANKAN ROBOT PENGAMBIL DATA
+      # Ini akan memperbarui file JSON di folder frontend/public/data
+      - name: Run Data Robot
         run: node scripts/update-data.js
 
-      - name: Commit and Push Changes
+      # 2. COMMIT PERUBAHAN KE MAIN (Agar source code tersimpan)
+      - name: Commit Data to Main
         run: |
           git config --global user.name "GitHub Actions Bot"
           git config --global user.email "actions@github.com"
           git add frontend/public/data/
-          # Commit hanya jika ada perubahan
-          git commit -m "Auto-update: Survey data cache" || echo "No changes to commit"
-          git push
+          # Commit hanya jika ada perubahan, kalau tidak ada lanjut saja
+          git commit -m "Auto-update: Survey data cache [skip ci]" || echo "No changes to commit"
+          git push origin main
+
+      # 3. BUILD PROJECT (Memasak website dengan data baru)
+      - name: Install Dependencies & Build
+        working-directory: ./frontend
+        run: |
+          npm install
+          # Pastikan base path sesuai repository
+          npm run build -- --base=/survei/
+
+      # 4. DEPLOY KE GH-PAGES (Agar website live berubah)
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: frontend/dist # Folder hasil build Vite
+          branch: gh-pages      # Branch tujuan website
+          clean: true           # Hapus file lama di gh-pages sebelum upload
