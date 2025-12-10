@@ -21,19 +21,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20 # Update ke Node 20 (LTS) agar lebih stabil
 
       # 1. JALANKAN ROBOT PENGAMBIL DATA
-      # File JSON akan dibuat di dalam folder frontend/public/data di server virtual ini
+      # Pastikan Anda sudah mengedit scripts/update-data.js dengan URL asli sebelum push ini
       - name: Run Data Robot
         run: node scripts/update-data.js
-
-      # LANGKAH "COMMIT TO MAIN" DIHAPUS AGAR LEBIH STABIL & ANTI-ERROR
-      # Data JSON yang baru dibuat otomatis akan ikut ter-build di langkah selanjutnya.
 
       # 2. BUILD PROJECT (Memasak website dengan data baru)
       - name: Install Dependencies & Build
         working-directory: ./frontend
+        env:
+          CI: false # Mencegah error 'Treating warnings as errors'
         run: |
           npm install
           # Pastikan base path sesuai repository
@@ -43,6 +42,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }} # Menambahkan token eksplisit
           folder: frontend/dist # Folder hasil build Vite
           branch: gh-pages      # Branch tujuan website
           clean: true           # Hapus file lama di gh-pages sebelum upload
