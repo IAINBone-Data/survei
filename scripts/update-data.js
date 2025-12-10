@@ -3,7 +3,7 @@ const path = require('path');
 
 // --- KONFIGURASI ---
 // GANTI DENGAN URL WEB APP GOOGLE SCRIPT ANDA
-const API_URL = "https://script.google.com/macros/s/AKfycbxEIUQlNmGrD1Idj5n1dAvKpRbSJCz6vjDRUlYPoAj-Idm9bl3jTtnkmwBVmRf7KFK1Xg/exec"; 
+const API_URL = "https://script.google.com/macros/s/AKfycbwk31PTpnvLXfSrMMMa9MwT_6E6tq4mk0BdwOuJu3eytnk6JNjN0TKYiI79bpt97KtmHg/exec"; 
 
 // Lokasi penyimpanan file JSON (di dalam folder public frontend agar bisa diakses web)
 const DATA_DIR = path.join(__dirname, '../frontend/public/data');
