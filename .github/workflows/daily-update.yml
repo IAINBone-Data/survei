@@ -24,21 +24,14 @@ jobs:
           node-version: 18
 
       # 1. JALANKAN ROBOT PENGAMBIL DATA
-      # Ini akan memperbarui file JSON di folder frontend/public/data
+      # File JSON akan dibuat di dalam folder frontend/public/data di server virtual ini
       - name: Run Data Robot
         run: node scripts/update-data.js
 
-      # 2. COMMIT PERUBAHAN KE MAIN (Agar source code tersimpan)
-      - name: Commit Data to Main
-        run: |
-          git config --global user.name "GitHub Actions Bot"
-          git config --global user.email "actions@github.com"
-          git add frontend/public/data/
-          # Commit hanya jika ada perubahan, kalau tidak ada lanjut saja
-          git commit -m "Auto-update: Survey data cache [skip ci]" || echo "No changes to commit"
-          git push origin main
+      # LANGKAH "COMMIT TO MAIN" DIHAPUS AGAR LEBIH STABIL & ANTI-ERROR
+      # Data JSON yang baru dibuat otomatis akan ikut ter-build di langkah selanjutnya.
 
-      # 3. BUILD PROJECT (Memasak website dengan data baru)
+      # 2. BUILD PROJECT (Memasak website dengan data baru)
       - name: Install Dependencies & Build
         working-directory: ./frontend
         run: |
@@ -46,7 +39,7 @@ jobs:
           # Pastikan base path sesuai repository
           npm run build -- --base=/survei/
 
-      # 4. DEPLOY KE GH-PAGES (Agar website live berubah)
+      # 3. DEPLOY KE GH-PAGES (Agar website live berubah)
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
