@@ -13,7 +13,8 @@ const SHEET_NAME = {
   CONFIG: "db_config",       
   REKAP: "db_rekap",         
   HISTORY: "db_history",
-  SERVICES: "db_services"    // [BARU] Tempat data Unit & Layanan
+  SERVICES: "db_services",
+  INFO: "db_info" // [BARU]
 };
 
 const COLUMN_MAP = {

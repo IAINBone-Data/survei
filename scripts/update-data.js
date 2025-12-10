@@ -59,9 +59,8 @@ async function fetchData(action, filename) {
 async function run() {
     console.log(`🚀 Memulai Robot Update Data ke: ${API_URL}`);
     
-    // Validasi URL sederhana
     if (API_URL.includes("GANTI_DENGAN")) {
-        console.error("❌ ERROR: Anda belum mengganti URL API di file scripts/update-data.js!");
+        console.error("❌ ERROR: URL API belum diganti!");
         process.exit(1);
     }
 
@@ -69,6 +68,7 @@ async function run() {
         fetchData('getConfig', 'config.json'),
         fetchData('getServices', 'services.json'),
         fetchData('getHistory', 'history.json'),
+        fetchData('getInfo', 'info.json'), // [BARU] Tambahkan ini
     ]);
     console.log("🎉 Selesai! Semua data berhasil diperbarui.");
 }

@@ -134,3 +134,26 @@ function getSurveyStats() {
     return createErrorResponse("Gagal memuat statistik: " + error.message);
   }
 }
+
+// --- 5. HANDLE INFO PELAKSANAAN (BARU) ---
+function getSurveyInfo() {
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(SHEET_NAME.INFO);
+    
+    if(!sheet) return createSuccessResponse({}, "Sheet Info belum dibuat");
+
+    const data = sheet.getDataRange().getValues();
+    const headers = data.shift(); // Buang header
+
+    // Ubah menjadi Object sederhana { "Periode": "...", "Status": "..." }
+    const infoData = {};
+    data.forEach(row => {
+      if(row[0]) infoData[row[0]] = row[1];
+    });
+
+    return createSuccessResponse(infoData, "Info dimuat");
+  } catch (error) {
+    return createErrorResponse("Gagal memuat info: " + error.message);
+  }
+}
