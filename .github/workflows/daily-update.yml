@@ -16,15 +16,16 @@ jobs:
     
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 20 # Update ke Node 20 (LTS) agar lebih stabil
+          node-version: 20
 
       # 1. JALANKAN ROBOT PENGAMBIL DATA
-      # Pastikan Anda sudah mengedit scripts/update-data.js dengan URL asli sebelum push ini
+      # Jika langkah ini gagal, berarti URL Script di scripts/update-data.js masih salah
+      # atau Deployment Google Script belum diset ke "Anyone"
       - name: Run Data Robot
         run: node scripts/update-data.js
 
@@ -42,7 +43,7 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }} # Menambahkan token eksplisit
           folder: frontend/dist # Folder hasil build Vite
           branch: gh-pages      # Branch tujuan website
           clean: true           # Hapus file lama di gh-pages sebelum upload
+          single-commit: true   # PENTING: Memaksa timpa history (Solusi ampuh anti-konflik)
