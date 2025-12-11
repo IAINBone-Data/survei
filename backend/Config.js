@@ -14,9 +14,12 @@ const SHEET_NAME = {
   REKAP: "db_rekap",         
   HISTORY: "db_history",
   SERVICES: "db_services",
-  INFO: "db_info" // [BARU]
+  INFO: "db_info",
+  USERS: "db_users",
+  SETTINGS: "db_settings" // [BARU] Tambahkan baris ini
 };
 
+// Mapping Kolom db_responden
 const COLUMN_MAP = {
   TIMESTAMP: 0,
   ID_RESPONDEN: 1,
