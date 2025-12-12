@@ -1,0 +1,56 @@
+[
+  {
+    "kode": "U1",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu tentang kesesuaian persyaratan pelayanan yang harus dipenuhi dengan persyaratan pelayanan yang diinformasikan?",
+    "label_skala_1": "Tidak Sesuai",
+    "label_skala_4": "Sangat Sesuai"
+  },
+  {
+    "kode": "U2",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai kemudahan prosedur yang dijalani untuk mendapatkan layanan ?",
+    "label_skala_1": "Tidak Mudah",
+    "label_skala_4": "Sangat Mudah"
+  },
+  {
+    "kode": "U3",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai kecepatan penyelesaian pelayanan dengan standar layanan yang ada ?",
+    "label_skala_1": "Tidak Cepat",
+    "label_skala_4": "Sangat Cepat"
+  },
+  {
+    "kode": "U4",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai kesesuaian biaya pelayanan sesuai dengan standar layanan yang ada ?",
+    "label_skala_1": "Tidak Sesuai",
+    "label_skala_4": "Sangat Sesuai"
+  },
+  {
+    "kode": "U5",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu tentang kesesuaian hasil produk layanan yang diberikan dengan standar layanan yang ada ?",
+    "label_skala_1": "Tidak Sesuai",
+    "label_skala_4": "Sangat Sesuai"
+  },
+  {
+    "kode": "U6",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai kompetensi petugas atau keandalan sistem informasi layanan dalam memberikan pelayanan ?",
+    "label_skala_1": "Tidak Kompeten",
+    "label_skala_4": "Sangat Kompeten"
+  },
+  {
+    "kode": "U7",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai perilaku petugas pelayanan atau kemudahan sistem informasi layanan dalam pelayanan ?",
+    "label_skala_1": "Tidak Ramah",
+    "label_skala_4": "Sangat Ramah"
+  },
+  {
+    "kode": "U8",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu terhadap kualitas dan ketersediaan sarana dan prasarana pelayanan di unit tersebut ?",
+    "label_skala_1": "Buruk",
+    "label_skala_4": "Sangat Baik"
+  },
+  {
+    "kode": "U9",
+    "pertanyaan": "Bagaimana penilaian Bapak/Ibu mengenai layanan konsultasi dan pengaduan yang disediakan ?",
+    "label_skala_1": "Tidak Ada ",
+    "label_skala_4": "Sangat Baik"
+  }
+]

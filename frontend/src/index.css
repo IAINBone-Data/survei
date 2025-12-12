@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: #f8fafc; /* Slate-50 */
+    font-family: 'Inter', system-ui, sans-serif; /* Tambahan font agar lebih rapi */
+}
