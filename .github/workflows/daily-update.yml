@@ -24,10 +24,9 @@ jobs:
           node-version: 20
 
       # 1. JALANKAN ROBOT PENGAMBIL DATA
-      # Jika langkah ini gagal, berarti URL Script di scripts/update-data.js masih salah
-      # atau Deployment Google Script belum diset ke "Anyone"
+      # [FIX] Jalur script disesuaikan ke dalam folder frontend
       - name: Run Data Robot
-        run: node scripts/update-data.js
+        run: node frontend/scripts/update-data.js
 
       # 2. BUILD PROJECT (Memasak website dengan data baru)
       - name: Install Dependencies & Build
