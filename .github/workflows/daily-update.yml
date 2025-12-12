@@ -24,25 +24,28 @@ jobs:
           node-version: 20
 
       # 1. JALANKAN ROBOT PENGAMBIL DATA
-      # [FIX] Jalur script disesuaikan ke dalam folder frontend
       - name: Run Data Robot
         run: node frontend/scripts/update-data.js
 
-      # 2. BUILD PROJECT (Memasak website dengan data baru)
+      # 2. BUILD PROJECT & FIX 404
       - name: Install Dependencies & Build
         working-directory: ./frontend
         env:
-          CI: false # Mencegah error 'Treating warnings as errors'
+          CI: false 
         run: |
           npm install
-          # Pastikan base path sesuai repository
+          # Build website
           npm run build -- --base=/survei/
+          
+          # [FIX] Jalankan script 404 manual agar Admin tidak error saat refresh
+          # Kita panggil ini karena Action tidak menjalankan 'predeploy' hook
+          node scripts/finalize-build.js
 
-      # 3. DEPLOY KE GH-PAGES (Agar website live berubah)
+      # 3. DEPLOY KE GH-PAGES
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: frontend/dist # Folder hasil build Vite
-          branch: gh-pages      # Branch tujuan website
-          clean: true           # Hapus file lama di gh-pages sebelum upload
-          single-commit: true   # PENTING: Memaksa timpa history (Solusi ampuh anti-konflik)
+          folder: frontend/dist 
+          branch: gh-pages      
+          clean: true           
+          single-commit: true
