@@ -187,11 +187,3 @@ function changePassword(token, jsonData) {
     return createErrorResponse("Gagal mengubah password: " + error.message);
   }
 }
-
-// --- FUNGSI BANTUAN UNTUK MEMBUAT ADMIN PERTAMA ---
-// Jalankan fungsi ini sekali saja dari Editor Apps Script untuk membuat akun Anda.
-function manualRegisterAdmin() {
-  // Ganti "admin" dan "admin123" dengan username/password yang Anda mau.
-  const result = registerUser("admin", "admin123", "SuperAdmin", ""); 
-  Logger.log(result.getContent());
-}

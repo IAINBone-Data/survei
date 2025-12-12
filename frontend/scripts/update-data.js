@@ -1,5 +1,6 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 // ================================================================
 // KONFIGURASI PENTING
@@ -7,9 +8,12 @@ const path = require('path');
 const API_URL = "https://script.google.com/macros/s/AKfycbyRljR2vjozXtvEkbnemM39IBEIEN5VY_7jpnZas3amAS35U_tH4NKc89-yCf8RE5bYhQ/exec"; 
 // ================================================================
 
-// [FIX] Karena script sekarang ada di dalam 'frontend/scripts/', 
-// kita cukup mundur satu langkah (../) untuk sampai ke 'frontend/', 
-// lalu masuk ke 'public/data'.
+// [SETUP PATH KHUSUS ESM]
+// Karena __dirname tidak ada di ES Module, kita buat manual:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Target: folder public/data (Mundur satu langkah dari scripts/)
 const DATA_DIR = path.join(__dirname, '../public/data');
 
 // Pastikan folder tujuan ada
@@ -21,6 +25,7 @@ if (!fs.existsSync(DATA_DIR)){
 async function fetchData(action, filename) {
     console.log(`⏳ [${action}] Sedang mengambil data...`);
     try {
+        // Fetch sudah native di Node.js 18+ (tidak perlu import)
         const response = await fetch(`${API_URL}?action=${action}`);
         
         if (!response.ok) {
@@ -66,7 +71,7 @@ async function run() {
         fetchData('getServices', 'services.json'),
         fetchData('getHistory', 'history.json'),
         fetchData('getInfo', 'info.json'),
-        // Tambahkan fetchData('getSettingsData', 'settings.json') jika nanti diperlukan
+        // fetchData('getSettingsData', 'settings.json') // Opsional jika sudah ada
     ]);
     console.log("🎉 Selesai! Semua data berhasil diperbarui.");
 }
