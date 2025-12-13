@@ -1,0 +1,116 @@
+{
+  "PTSP IAIN Bone (Rektorat)": [
+    "Pelayanan Beasiswa",
+    "Pelayanan Cuti Akademik",
+    "Pelayanan terkait Ijazah",
+    "Pelayanan Izin Penelitian",
+    "Pelayanan Data Mahasiswa",
+    "Pelayanan Surat Menyurat",
+    "Pelayanan Wisuda dan Alumni",
+    "Pelayanan Data Prestasi Mahasiswa",
+    "Pelayanan Surat Keterangan Pembayaran",
+    "Pelayanan BMN dan Persedian",
+    "Pelayanan Surat Keterangan"
+  ],
+  "Fakultas Tarbiyah": [
+    "Pelayanan Cuti Akademik",
+    "Pelayanan Ijin Akademik",
+    "Pelayanan Penerbitan Surat Keterangan/Rekomendasi",
+    "Pelayanan Surat Masuk",
+    "Pelayanan Pindah (Masuk & Keluar) Mahasiswa",
+    "Pelayanan Ujian Proposal & Munaqasah",
+    "Pelayanan Penunjukan Pembimbing/Penguji Skripsi",
+    "Pelayanan Yudisium",
+    "Pelayanan Pengesahan Ijazah",
+    "Pelayanan Ujian Komprehensif",
+    "Pelayanan Klinik Konseling",
+    "Pelayanan Izin Pemakaian/Peminjaman Aula dan Alat Fakultas",
+    "Pelayanan Pengadaan ATK",
+    "Pelayanan Penetapan Judul Penelitian",
+    "Pelayanan Pengimputan Nilai Mahasiswa",
+    "Pelayanan Bimbingan Proposal dan Tugas Akhir"
+  ],
+  "Fakultas Syariah dan Hukum Islam": [
+    "Pelayanan Cuti Akademik",
+    "Pelayanan Ijin Akademik",
+    "Pelayanan Penerbitan Surat Keterangan/Rekomendasi",
+    "Pelayanan Surat Menyurat",
+    "Pelayanan Permohonan Pindah Mahasiswa",
+    "Pelayanan Ujian Seminar Proposal & Sidang Munaqasah",
+    "Pelayanan Penunjukan Pembimbing/Penguji Skripsi",
+    "Pelayanan Yudisium",
+    "Pelayanan Pengesahan Ijazah",
+    "Pelayanan Ujian Komprehensif",
+    "Pelayanan Cetak Transkrip Nilai",
+    "Pelayanan Peminjaman Aula",
+    "Pelayanan Permohonan ATK"
+  ],
+  "Fakultas Ekonomi dan Bisnis Islam": [
+    "Pelayanan Cuti Akademik",
+    "Pelayanan Pindah (Masuk & Keluar) Mahasiswa",
+    "Pelayanan Surat Menyurat",
+    "Pelayanan Yudisium",
+    "Pelayanan Data Prestasi Mahasiswa",
+    "Pelayanan Ujian Seminar Proposal, Ujian Komprehensif & Sidang Munaqasyah",
+    "Pelayanan Penunjukan Pembimbing/Penguji Skripsi",
+    "Pelayanan Pengesahan Ijazah",
+    "Pelayanan Peminjaman Aula dan LCD/Sound Sistem"
+  ],
+  "Fakultas Ushuluddin Dan Dakwah": [
+    "Pelayanan Cuti Akademik",
+    "Pelayanan Ijin Akademik",
+    "Pelayanan Penerbitan Surat Keterangan/Rekomendasi",
+    "Pelayanan Surat Menyurat",
+    "Pelayanan Pindah (Masuk & Keluar) Mahasiswa",
+    "Pelayanan Ujian Seminar Proposal & Sidang Munaqasah",
+    "Pelayanan Penunjukan Pembimbing/Penguji Skripsi",
+    "Pelayanan Yudisium",
+    "Pelayanan Pengesahan Ijazah",
+    "Pelayanan Ujian Komprehensif",
+    "Pelayanan Klinik Konseling",
+    "Pelayanan Peminjaman Aula",
+    "Pelayanan Peminjaman LCD/Sound Sistem"
+  ],
+  "Pascasarjana": [
+    "Pelayanan pembuatan SK Promotor",
+    "Pelayanan pembuatan SK Penguji",
+    "Pelayanan pembuatan surat cuti",
+    "Pelayanan izin akademik",
+    "Pelayanan pembuatan surat keterangan kuliah",
+    "Pelayanan sarpras perkuliahan"
+  ],
+  "Fungsi Organisasi, Kepegawaian dan Hukum": [
+    "Fungsi Organisasi, Kepegawaian dan Hukum"
+  ],
+  "Fungsi Keuangan": [
+    "Fungsi Keuangan"
+  ],
+  "Fungsi Perencanaan": [
+    "Fungsi Perencanaan"
+  ],
+  "Satuan Pengawasan Internal": [
+    "Satuan Pengawasan Internal"
+  ],
+  "Lembaga Penjaminan Mutu": [
+    "Lembaga Penjaminan Mutu"
+  ],
+  "Lembaga Penelitian dan Pengabdian Kepada Masyarakat": [
+    "Lembaga Penelitian dan Pengabdian Kepada Masyarakat"
+  ],
+  "UPT TIPD": [
+    "Sistem TUSITA",
+    "Layanan Infrastruktur Jaringan & Internet",
+    "Layanan Email Institusi",
+    "Layanan Website",
+    "Layanan Pengelolaan Data & Server"
+  ],
+  "UPT Perpustakaan": [
+    "UPT Perpustakaan"
+  ],
+  "UPT Bahasa": [
+    "UPT Bahasa"
+  ],
+  "UPT Mahad Al Jamiah": [
+    "UPT Mahad Al Jamiah"
+  ]
+}
